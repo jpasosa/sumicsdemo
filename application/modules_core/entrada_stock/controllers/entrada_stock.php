@@ -50,15 +50,11 @@ class Entrada_stock extends MY_Codeigniter {
 			$data['error_message'] 	= $error_message;
 			$data['view_template']	= 'entrada_stock/agregar_productos';
 
-
-
 			// GROCERY CRUD
 			$this->load->library('grocery_CRUD');
 			$crud = new grocery_CRUD();
-
 			// LLAMO DESPUES DE HACER EL INSERT EN ENTRADAS
 			$crud->callback_after_insert(array($this, 'insert_trans_entradas'));
-
 			// TABLAS
 			$crud->set_subject('Entradas al Stock');
 			$crud->set_theme('flexigrid');
@@ -85,8 +81,13 @@ class Entrada_stock extends MY_Codeigniter {
 					->display_as('precio','Precio')
 					->display_as('cantidad','Cantidad')
 					->display_as('observaciones','Observaciones');
-			$crud->field_type( 'observaciones' , 'text' );
+
+			// Validaciones
 			$crud->required_fields('fecha_created', 'id_productos','id_tipodocumento','nro_tipodocumento','precio', 'cantidad');
+			$crud->set_rules('precio','Precio','numeric|required');
+
+			$crud->field_type( 'observaciones' , 'text' );
+
 			$crud->unset_texteditor('observaciones');
 			$crud->unset_export();
 			$crud->unset_print();
@@ -143,14 +144,31 @@ class Entrada_stock extends MY_Codeigniter {
 		}
 	}
 
-	// CUANDO TERMINA DE INSERTAR EN ENTRADAS VIENE ACÁ
+
+
+
+
+
+
+
+	/**
+	 * Cuando termina de insertar la entrada viene acá, debe hacer
+	 * el insert en la tabla trans, para llevar el historial de lo que hace cada usuario.
+	 *
+	 * @team 	Senaf
+	 * @author 	juampa <jpasosa@gmail.com>
+	 * @date 	10 de Diciembre del 2013
+	 *
+	 * @return      boolean (true si pudo insertar bien el id de la transacción)
+	 **/
 	public function insert_trans_entradas($nueva_entrada, $id_entrada)
 	{
-		$id_trans 			= $this->action_trans->insertEntradas();
-		$update_entradas 	= $this->action_entradas->update($id_entrada, $id_trans);
-		$insert_stock_actual= $this->action_stockactual->insert($nueva_entrada, $id_trans);
-
-	    return true;
+		$id_trans 			= $this->action_trans->insertEntradas( $id_entrada );
+		if ($id_trans) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 

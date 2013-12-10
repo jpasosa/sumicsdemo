@@ -25,9 +25,11 @@ class Action_entradas extends CI_Model
 	{
 
 		$this->db->where('id_entradas', $id_entradas);
-		$this->db->update('entradas', array('id_trans' => $id_trans));
+		$this->db->update('trans', array('id_trans' => $id_trans));
 
 		$update = $this->db->affected_rows();
+
+
 
 		if($update == 1) {
 			return true;

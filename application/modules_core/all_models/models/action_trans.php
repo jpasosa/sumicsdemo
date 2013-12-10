@@ -9,13 +9,34 @@ class Action_trans extends CI_Model
 	}
 
 
+	/**
+	 * Hace el insert en la tabla trans para llevar el historial del sistema.
+	 * Debe usar el id 7, que es una entrada de un productos, este id no
+	 * hay que modificarlo nunca de la tabla
+	 *
+	 * @team 	Senaf
+	 * @author 	juampa <jpasosa@gmail.com>
+	 * @date 	10 de diciembre del 2013
+	 *
+	 * @return      booleano ( si realizó correctamente el insert)
+	 **/
 
-	public function insertEntradas()
+	public function insertEntradas( $id_tabla )
 	{
-		$this->db->set('id_trans_estado', 1);
-		$insert_entrada = $this->db->insert('trans');
+		$data_insert = array(	'id_trans_estado' 	=> 7,
+								'id_usuario' 			=> $this->session->userdata('id_usuario'),
+								'fecha' 				=> date('Y-m-d'),
+								'id_tabla' 			=> $id_tabla
+							);
 
-		return $this->db->insert_id();
+		$insert_entrada = $this->db->insert('trans', $data_insert);
+
+		if ($insert_entrada) {
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 	// public function update($category)
