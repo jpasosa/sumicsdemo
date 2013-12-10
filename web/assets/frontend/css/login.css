@@ -1,0 +1,74 @@
+
+/*-------------------*/
+/*PRODUCTOS*/
+/*-------------------*/
+.left#menu_login {
+
+}
+
+.left#menu_login a {
+    margin: 15px 0 15px 0;
+    float: left;
+}
+
+
+.left#menu_login a:hover {
+    opacity:0.5;
+    filter:alpha(opacity=50);
+}
+
+.left#menu_login a img {
+    margin: 0 0 0 0;
+}
+
+
+
+
+
+/**/
+/**/
+/*LIST ARTICLES*/
+/**/
+/**/
+
+#login #right {
+
+}
+
+#login #right form {
+    width: 100%;
+    background-color: #F5F5F5;
+    height: 250px;
+    border: 1px solid #c3ecfb;
+    border-radius: 4px 4px 4px 4px;
+    margin: 50px 0 0 0;
+}
+
+#login #right form .error_login {
+    font-size: 10px;
+    color: #D82133;
+    margin: 3px 0 0 35px;
+}
+
+#login #right form input.form-control{
+    margin: 20px auto 10px auto;
+    width: 80%;
+    height: 40px;
+    font-size: 20px;
+}
+
+#login #right form label.checkbox {
+    margin: 10px auto 10px auto;
+    width: 80%;
+    font-size: 12px;
+}
+
+#login #right form button {
+    margin: 15px auto 10px auto;
+    width: 80%;
+    height: 40px;
+    font-size: 20px;
+    padding: 5px 0 5px 0;
+}
+
+

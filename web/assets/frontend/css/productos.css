@@ -1,0 +1,447 @@
+
+
+/*-----------------*/
+/*HOMEPAGE*/
+/*-----------------*/
+#homepage #menu_home.left img.back {
+    margin: 15px 0 0 0;
+    float: left;
+}
+
+
+
+
+/*-------------------*/
+/*PRODUCTOS*/
+/*-------------------*/
+.left#menu_productos {
+
+}
+
+.left#menu_productos a {
+    margin: 15px 0 15px 0;
+    float: left;
+}
+
+
+.left#menu_productos a:hover {
+    opacity:0.5;
+    filter:alpha(opacity=50);
+}
+
+.left#menu_productos a img {
+    margin: 0 0 0 0;
+}
+
+.inner-content.new_article {
+
+}
+
+.box_new_article {
+    background-color: #F5F5F5;
+    border-color: #F2F2F2 #F2F2F2 #E2E2E2;
+    border-style: solid;
+    border-width: 1px;
+    float: left;
+    margin: 20px 0 0 0;
+    /*min-height: 103px;*/
+    /*padding: 12px;*/
+    max-width: 540px;
+    height: 530px;
+}
+
+.alert-error.add_edit_product {
+    margin: 10px 0 10px 0;
+    height: 30px;
+    padding: 4px 0 0 30px;
+}
+
+.alert-success.add_edit_product {
+    margin: 10px 0 10px 0;
+    height: 30px;
+    padding: 4px 0 0 30px;
+}
+
+.box_new_article .title {
+    border-bottom: 1px solid #F2F2F2;
+    float: left;
+    width: 100%;
+    height: 35px;
+    background-color: #DDDDDD;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-align: center;
+    font-size: 26px;
+}
+
+.box_new_article form {
+
+}
+
+.box_new_article form .image_top {
+    /*float: left;*/
+    margin: 60px 0 0 50px;
+    height: 140px;
+}
+
+.box_new_article form .image_top img {
+    float: left;
+}
+
+
+
+.box_new_article form .image_top .code {
+    float:left;
+    width: 200px;
+}
+
+.box_new_article form .image_top .code label {
+    width: 100%;
+    text-transform:uppercase;
+    font-size: 12px;
+}
+
+.box_new_article form .image_top .code input {
+    width: 200px;
+    border: 1px solid #8c8a8a;
+    margin: 5px 0 0 0;
+    color: #a29b9b;
+}
+
+
+
+.box_new_article form .image_top .descripcion {
+    float: left;
+    width: 200px;
+    margin: 20px 0 0 0;
+}
+
+.box_new_article form .image_top .descripcion label {
+    width: 100%;
+    text-transform:uppercase;
+    font-size: 12px;
+}
+
+.box_new_article form .image_top .descripcion input {
+    width: 200px;
+    border: 1px solid #8c8a8a;
+    margin: 5px 0 0 0;
+    color: #a29b9b;
+}
+
+.inner-content .box_new_article form .bottom {
+    /*float: left;*/
+    margin: 0 0 20px 50px;
+    /*width: 100%;*/
+}
+
+.inner-content .box_new_article form .bottom .observaciones {
+    float: left;
+    margin: 20px 0 20px 20px;
+    width: 100%;
+}
+
+.inner-content .box_new_article form .bottom .observaciones label {
+    width: 100%;
+    text-transform:uppercase;
+    font-size: 12px;
+}
+
+.inner-content .box_new_article form .bottom .observaciones textarea {
+    width: 380px;
+    border: 1px solid #8c8a8a;
+    margin: 10px 0 0 0;
+    color: #a29b9b;
+}
+
+
+
+.inner-content .box_new_article form .bottom .detalle {
+    float: left;
+    width: 100%;
+    margin: 0 0 0 20px;
+}
+
+.inner-content .box_new_article form .bottom .detalle label {
+    width: 100%;
+    text-transform:uppercase;
+    font-size: 12px;
+    float: left;
+}
+
+.inner-content .box_new_article form .bottom .detalle input {
+    width: 380px;
+    border: 1px solid #8c8a8a;
+    margin: 10px 0 0 0;
+    color: #a29b9b;
+}
+
+
+
+.box_new_article form .bottom .categoria {
+    float: left;
+    width: 100%;
+    margin: 20px 0 0 20px;
+}
+
+.box_new_article form .bottom .categoria label {
+    width: 100%;
+    text-transform:uppercase;
+    font-size: 12px;
+    float: left;
+}
+
+.box_new_article form .bottom .categoria select {
+    width: 380px;
+    border: 1px solid #8c8a8a;
+    margin: 10px 0 0 0;
+    color: #000000;
+}
+
+.box_new_article form .agregar {  /*BOTON AGREGAR*/
+    font-size: 16px;
+    width: 100px;
+    float: right;
+    margin: 40px 80px 20px 0;
+}
+
+
+
+
+
+
+
+
+
+/**/
+/**/
+/*LIST ARTICLES*/
+/**/
+/**/
+
+#listar_productos .inner-content.list_article {
+    float: left;
+    margin:20px 0 0 0;
+    width: 100%;
+}
+
+
+#listar_productos table tr:hover {
+    background-color: #d9ebf5;
+}
+
+#listar_productos table tr th {
+    background-color: #F5F5F5;
+}
+
+#listar_productos table tr th:hover {
+    background-color: #F5F5F5;
+}
+
+#listar_productos table td {
+    font-size: 12px;
+}
+
+#listar_productos table tr td.actions a {
+    margin: 0 6px 0 6px;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+#listar_productos table tr td.actions a:hover {
+    list-style-type: none;
+    text-decoration: none;
+    opacity:0.2;
+    filter:alpha(opacity=20);
+}
+
+
+/*filtros*/
+
+#listar_productos #right form  {
+    width: 100%;
+}
+
+#listar_productos #right form .categoria {
+    width: 100%;
+    height: 50px;
+    margin: 0 0 0 0;
+}
+
+#listar_productos #right form .categoria {
+    margin: 0;
+}
+
+
+
+#listar_productos #right form .categoria label {
+    float: left;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+
+#listar_productos #right form .categoria select {
+    border: 1px solid #8C8A8A;
+    color: #000000;
+    margin: 0 20px 0 20px;
+    width: 200px;
+    float: left;
+}
+
+#listar_productos #right form .categoria .paginador_productos {
+    float: right;
+    margin: 0 50px 0 0;
+}
+
+#listar_productos #right form .categoria .paginador_productos .pagination {
+    margin: 0;
+}
+
+
+
+
+
+
+/**/
+/**/
+/*CONFIGURAION*/
+/**/
+/**/
+
+#productos_configuracion #right ul li.dropdown a.menu {
+    padding: 8px 15px 8px 15px;
+    color: #D82133;
+}
+
+#productos_configuracion #right .title,
+#listar_productos #right .title {
+    width: 100%;
+    font-size: 22px;
+    margin: 10px 0 10px 0;
+    font-weight: bold;
+    color: #333333;
+}
+
+#productos_configuracion #right .content_menu {
+    width: 100%;
+    margin: 10px 0 30px 0;
+}
+
+
+
+/*ALTA EDICION DE UNA CATEGORIA*/
+#productos_configuracion #right .add_edit_category {
+    width: 420px;
+    /*margin: 10px 0 30px 0;*/
+    background-color: #F5F5F5;
+    height: 180px;
+    border: 1px solid #DDDDDD;
+}
+
+#productos_configuracion #right .add_edit_category .title {
+    width: 100%;
+    background-color: #DDDDDD;
+    /*height: 40px;*/
+    text-align: center;
+    margin: 0;
+}
+
+#productos_configuracion #right .add_edit_category .codigo_abrev {
+    margin: 10px 0 10px 20px;
+}
+#productos_configuracion #right .add_edit_category .codigo_abrev label {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+#productos_configuracion #right .add_edit_category .codigo_abrev input {
+    margin: 0 0 0 87px;
+    border: 1px solid #8C8A8A;
+    width: 100px;
+
+}
+
+#productos_configuracion #right .add_edit_category .nombre {
+    margin: 10px 0 10px 20px;
+}
+#productos_configuracion #right .add_edit_category .nombre label {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+#productos_configuracion #right .add_edit_category .nombre input {
+    margin: 10px 0 10px 20px;
+    border: 1px solid #8C8A8A;
+    width: 250px;
+}
+/*boton agregar*/
+#productos_configuracion #right .add_edit_category .agregar {
+    margin: 0 60px 0 0;
+    float: right;
+}
+
+
+
+/*LISTA DE CATEGORIAS*/
+
+#productos_configuracion #right .lista_categorias tr td.actions a {
+    padding: 0 10px 0 10px;
+}
+
+#productos_configuracion #right .lista_categorias tr td.actions a:hover {
+    text-decoration: none;
+    list-style-type: none;
+    opacity:0.5;
+    filter:alpha(opacity=50);
+}
+
+
+
+
+
+
+/*CONFIGURACION DE LA PAGINACION DE LOS PRODUCTOS*/
+
+#productos_configuracion #right .config_page {
+    width: 420px;
+    /*margin: 10px 0 30px 0;*/
+    background-color: #F5F5F5;
+    height: 120px;
+    border: 1px solid #DDDDDD;
+}
+
+#productos_configuracion #right .config_page {
+    width: 420px;
+    /*margin: 10px 0 30px 0;*/
+    background-color: #F5F5F5;
+    height: 120px;
+    border: 1px solid #DDDDDD;
+}
+
+#productos_configuracion #right .config_page .title {
+    width: 100%;
+    background-color: #DDDDDD;
+    /*height: 40px;*/
+    text-align: center;
+    margin: 0;
+}
+
+#productos_configuracion #right .config_page .cant_items {
+    margin: 10px 0 10px 20px;
+}
+#productos_configuracion #right .config_page .cant_items label {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+#productos_configuracion #right .config_page .cant_items input {
+    margin: 0 0 0 87px;
+    border: 1px solid #8C8A8A;
+    width: 100px;
+
+}
+
+/*boton agregar*/
+#productos_configuracion #right .config_page .agregar {
+    margin: 0 60px 0 0;
+    float: right;
+}
+

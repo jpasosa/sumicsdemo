@@ -1,0 +1,135 @@
+.left#menu_entradas a {
+    margin: 20px auto 20px auto;
+    width: 100%;
+    float: left;
+    text-align: center;
+}
+
+
+
+#entrada_stock .title {
+	width: 100%;
+	font-size: 22px;
+	margin: 10px 0 10px 0;
+	font-weight: bold;
+	color: #333333;
+}
+
+#entrada_stock .inner-content {
+    float: left;
+    margin:20px 0 0 0;
+    width: 100%;
+}
+
+/*-------------------------------------*/
+/*arreglos del grocery_crud*/
+/*-------------------------------------*/
+
+
+input#field-nro_tipodocumento,
+input#field-precio,
+input#field-cantidad,
+input#field-fecha_created {
+    height: 25px;
+}
+
+
+
+
+
+/*-----------------------*/
+/*-----------------------*/
+/*CONFIGURACION*/
+/*-----------------------*/
+/*-----------------------*/
+
+#entradas_configuracion #right ul li.dropdown a.menu {
+    padding: 8px 15px 8px 15px;
+    color: #D82133;
+}
+
+#entradas_configuracion #right .title,
+#listar_productos #right .title {
+    width: 100%;
+    font-size: 22px;
+    margin: 10px 0 10px 0;
+    font-weight: bold;
+    color: #333333;
+}
+
+#entradas_configuracion #right .content_menu {
+    width: 100%;
+    margin: 10px 0 30px 0;
+}
+
+
+
+/*ALTA EDICION DE UNA CATEGORIA*/
+#entradas_configuracion #right .add_edit_category {
+    width: 420px;
+    /*margin: 10px 0 30px 0;*/
+    background-color: #F5F5F5;
+    height: 180px;
+    border: 1px solid #DDDDDD;
+}
+
+#entradas_configuracion #right .add_edit_category .title {
+    width: 100%;
+    background-color: #DDDDDD;
+    /*height: 40px;*/
+    text-align: center;
+    margin: 0;
+}
+
+#entradas_configuracion #right .add_edit_category .codigo_abrev {
+    margin: 10px 0 10px 20px;
+}
+#entradas_configuracion #right .add_edit_category .codigo_abrev label {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+#entradas_configuracion #right .add_edit_category .codigo_abrev input {
+    margin: 0 0 0 87px;
+    border: 1px solid #8C8A8A;
+    width: 100px;
+
+}
+
+#entradas_configuracion #right .add_edit_category .nombre {
+    margin: 10px 0 10px 20px;
+}
+#entradas_configuracion #right .add_edit_category .nombre label {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+#entradas_configuracion #right .add_edit_category .nombre input {
+    margin: 10px 0 10px 20px;
+    border: 1px solid #8C8A8A;
+    width: 250px;
+}
+/*boton agregar*/
+#entradas_configuracion #right .add_edit_category .agregar {
+    margin: 0 60px 0 0;
+    float: right;
+}
+
+
+
+/*LISTA DE CATEGORIAS*/
+
+#entradas_configuracion #right .lista_categorias tr td.actions a {
+    padding: 0 10px 0 10px;
+}
+
+#entradas_configuracion #right .lista_categorias tr td.actions a:hover {
+    text-decoration: none;
+    list-style-type: none;
+    opacity:0.5;
+    filter:alpha(opacity=50);
+}
+
+
+
+
+
+
