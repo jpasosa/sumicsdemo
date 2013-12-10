@@ -45,7 +45,7 @@ if($_SERVER['REMOTE_ADDR'] == '127.0.0.1') { // LOCAL
 define('RUTA', $ruta);
 
 if($_SERVER['REMOTE_ADDR'] == '127.0.0.1') { // LOCAL
-	define('RAIZ', 'http://sumi_cs');
+	define('RAIZ', 'http://sumicsdemo');
 }else { // DEMO
 	define('RAIZ', 'http://cstock.senaf.gob.ar');
 }
