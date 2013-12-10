@@ -122,7 +122,7 @@ class Productos extends MY_Codeigniter {
 				$filter['category_filter'] 	= true;
 				$filter['category_id'] 		= $this->uri->segment(4);
 				$data['filter_category']	= $this->uri->segment(4);
-				$base 					= 'http://sumi_cs/productos/listar/cat/' .$filter['category_id'] . '/page';
+				$base 					= base('productos/listar/cat/') .$filter['category_id'] . '/page';
 				$total_rows 			= $this->action_productos->countAllByCategory($filter['category_id']);
 				$uri_segment 			= 6;
 			}
@@ -132,7 +132,7 @@ class Productos extends MY_Codeigniter {
 				$filter['category_filter'] 	= false;
 				$filter['category_id'] 		= 0;
 				$data['filter_category']	= 0;
-				$base 					= 'http://sumi_cs/productos/listar/page';
+				$base 					= base_url('productos/listar/page');
 				$total_rows 			= $this->action_productos->countAll();
 				$uri_segment 			= 4;
 

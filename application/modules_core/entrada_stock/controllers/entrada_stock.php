@@ -154,6 +154,7 @@ class Entrada_stock extends MY_Codeigniter {
 	/**
 	 * Cuando termina de insertar la entrada viene acá, debe hacer
 	 * el insert en la tabla trans, para llevar el historial de lo que hace cada usuario.
+	 * Y además insertar o hacer update de la tabla stock_actual para que esté actualizada.
 	 *
 	 * @team 	Senaf
 	 * @author 	juampa <jpasosa@gmail.com>
