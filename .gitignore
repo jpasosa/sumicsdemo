@@ -1,0 +1,19 @@
+
+
+
+
+# CONFIGURACION DE BASE DE DATOS
+application/config/database.php
+
+# CACHE
+application/cache/*
+!application/cache/index.html
+!application/cache/.htaccess
+
+# LOGS
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
+
+# ARCHIVOS SUBIDOS
+web/uploads/*
