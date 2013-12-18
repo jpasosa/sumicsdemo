@@ -7,7 +7,7 @@ class Remitos extends MY_Codeigniter
 		parent::__construct();
 		$this->section = $this->router->fetch_class() . '.' . $this->router->fetch_method();
 
-		$this->css_includes				= array('frontend/css/remitos.css');
+		// $this->css_includes				= array('frontend/css/remitos.css');
 		$this->data['view_menu_izq']	= 'productos/menu_izq';
 		$this->data['title_section']		= 'REMITOS';
 		$this->data['js_includes']		= array();
@@ -33,7 +33,15 @@ class Remitos extends MY_Codeigniter
 	}
 
 
-	// AGREGAR UN PRODUCTO
+	/**
+	 * Agregar un remito
+	 *
+	 * @team 	Senaf
+	 * @author 	juampa <jpasosa@gmail.com>
+	 * @date 	16 de diciembre del 2013
+	 *
+	 * @return      void
+	 **/
 	public function agregar()
 	{
 		try {
@@ -47,14 +55,27 @@ class Remitos extends MY_Codeigniter
 
 
 
-			if($this->input->server('REQUEST_METHOD') == 'GET')
-			{ 		// START
-				// $product = $this->getDataEmpty();
+			if ( $this->input->server('REQUEST_METHOD') == 'POST' )
+			{ 	// POST
 
-			}else if ( $this->input->server('REQUEST_METHOD') == 'POST' )
-			{ // POST
-				echo 'vino por post';
+
+
+				// Estoy agregando items al remito
+				if (isset($_POST['agregar']))
+				{
+					$item = $this->getDataItems();
+
+				}
+
+				if (isset($_POST['remito_header']))
+				{
+					$remito_header = $this->getDataRemitoHeader();
+
+				}
+
 				die();
+
+
 
 			}
 
@@ -63,6 +84,9 @@ class Remitos extends MY_Codeigniter
 			// MENSAJES DE VALIDACIONES
 			$data['error_message']		= $error_message;
 
+
+			$productos 			= $this->get_productos->getAll();
+			$data['productos'] 	= $productos;
 			// DATOS DE VISTAS
 			$data['id_menu_left'] 	= 'menu_remitos';
 			$data['title']				= 'Control Stock';
@@ -72,13 +96,11 @@ class Remitos extends MY_Codeigniter
 			$data['show_add']		= true;
 			$data['configure_link']	= true;
 			$data['configure_link_title']= 'Configuraciones Remitos';
-			//$data['css_includes']	= $this->css_includes;
-			$data['css_includes']	= array('frontend/datepicker/jquery-ui.css');
-
+			$data['css_includes']	= array('frontend/css/remitos.css', 'frontend/datepicker/jquery-ui.css',
+											'../../assets/chosen/chosen.css');
 			$data['js_includes']		= array('frontend/datepicker/datepicker.spanish.js',
-											'frontend/datepicker/jquery-ui.js');
-
-
+											'frontend/datepicker/jquery-ui.js',
+											'../../assets/chosen/chosen.jquery.js');
 			// LEVANTO VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
@@ -88,6 +110,67 @@ class Remitos extends MY_Codeigniter
 		} catch (Exception $e) {
 			throw new Exception($e->getMessage());
 		}
+	}
+
+	/**
+	 * Nos dá los POST de la cabecera del remito.
+	 *
+	 * @team 	Senaf
+	 * @author 	juampa <jpasosa@gmail.com>
+	 * @date 	18 de diciembre del 2013
+	 *
+	 * @return      Array
+	 **/
+	private function getDataRemitoHeader()
+	{
+		$remito = Array();
+
+		if ($this->input->post('fecha')) {
+			$remito['fecha'] = $this->input->post('fecha');
+		} else {
+			$remito['fecha'] = '';
+		}
+		if ($this->input->post('destino')) {
+			$remito['destino'] = $this->input->post('destino');
+		} else {
+			$remito['destino'] = '';
+		}
+		if ($this->input->post('observaciones')) {
+			$remito['observaciones'] = $this->input->post('observaciones');
+		} else {
+			$remito['observaciones'] = '';
+		}
+
+		return $remito;
+	}
+
+
+
+	/**
+	 * Nos dá los POST del item cargado del remito
+	 *
+	 * @team 	Senaf
+	 * @author 	juampa <jpasosa@gmail.com>
+	 * @date 	18 de diciembre del 2013
+	 *
+	 * @return      Array
+	 **/
+	private function getDataItems()
+	{
+		$item = Array();
+
+		if ($this->input->post('cantidad')) {
+			$item['cantidad'] = $this->input->post('cantidad');
+		} else {
+			$item['cantidad'] = 0;
+		}
+		if ($this->input->post('producto')) {
+			$item['producto'] = $this->input->post('producto');
+		} else {
+			$item['producto'] = 0;
+		}
+
+		return $item;
 	}
 
 

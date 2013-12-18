@@ -61,6 +61,9 @@
 	<script type="text/javascript">
 		// ahora se puede usar RUTA desde los .js, cambia si es LOCAL o DEMO
 		var RUTA = "<?php echo RAIZ; ?>";
+		$(function() { // Para habilitar el chosen.
+			$(".chzn-select").chosen();
+		});
 	</script>
 
 	<!-- JS DE LOS CONTROLADORES -->
@@ -69,6 +72,8 @@
 			<script src="<?php echo ASSETS . $js; ?>"></script>
 		<?php endforeach; ?>
 	<?php endif; ?>
+
+
 
 	<!-- GENERAL -->
 	<script src="<?php echo ASSETS . 'frontend/js/general.js'; ?>"></script>
