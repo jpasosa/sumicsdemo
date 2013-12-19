@@ -73,10 +73,6 @@ class Remitos extends MY_Codeigniter
 
 				}
 
-				die();
-
-
-
 			}
 
 			// debe levantar todos los productos disponibles, que ya estan ingresados al stock. . . .
