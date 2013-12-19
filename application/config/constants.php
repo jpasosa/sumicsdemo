@@ -47,7 +47,7 @@ define('RUTA', $ruta);
 if($_SERVER['REMOTE_ADDR'] == '127.0.0.1') { // LOCAL
 	define('RAIZ', 'http://sumicsdemo');
 }else { // DEMO
-	define('RAIZ', 'http://cstock.senaf.gob.ar');
+	define('RAIZ', 'http://democstock.senaf.gob.ar');
 }
 
 
