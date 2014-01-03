@@ -6,11 +6,17 @@ class Remitos extends MY_Codeigniter
 	public function __construct(){
 		parent::__construct();
 		$this->section = $this->router->fetch_class() . '.' . $this->router->fetch_method();
-
+		$this->load->model('remitos/repo_remitos'); // Repositorio del modelo de Remito
+		$this->load->model('remitos/get_remitos'); 	// Consultas simples, tipo getNombre();
+		$this->load->library('session');
+		$this->load->helper('date');
 		// $this->css_includes				= array('frontend/css/remitos.css');
 		$this->data['view_menu_izq']	= 'productos/menu_izq';
 		$this->data['title_section']		= 'REMITOS';
 		$this->data['js_includes']		= array();
+		if (!isLogged($this->session)) {
+			redirect('login');
+		}
 	}
 
 	public function index()
@@ -53,29 +59,55 @@ class Remitos extends MY_Codeigniter
 			$data['form_action'] 	= site_url('remitos/agregar/');
 			// $data['categorys'] 		= $this->get_categorias->getAll();
 
-
+			$remito_header = $this->getDataRemitoHeader();
 
 			if ( $this->input->server('REQUEST_METHOD') == 'POST' )
 			{ 	// POST
 
+				// Datos de cabecera del remito.
+				if (isset($_POST['remito_header']))
+				{
+					// Valido la cabecera del remito.
+					$validate_header = $this->repo_remitos->validate($remito_header);
+					if (count($validate_header) > 0) {
+						$error_message = $validate_header;
+					} else {
 
+						// No hay errores en la cabecera.
+						if (!$this->session->userdata('id_remitos')) {
+							// Es la primera vez que carga la cabecera del remito.
+							$insert_header 		= $this->repo_remitos->insertHeader($remito_header);
+							if ($insert_header > 0) {
+								$this->session->set_userdata('id_remitos', $insert_header);
+							}
+						} else {
+							// Está modificando la cabecera del remito.
+							$id_remitos 		= $this->session->userdata('id_remitos');
+							$update_header 	= $this->repo_remitos->updateHeader($remito_header, $id_remitos);
+							$remito_header = $this->getDataRemitoHeader();
+						}
+					}
+
+
+
+				}
 
 				// Estoy agregando items al remito
 				if (isset($_POST['agregar']))
 				{
 					$item = $this->getDataItems();
 
-				}
-
-				if (isset($_POST['remito_header']))
-				{
-					$remito_header = $this->getDataRemitoHeader();
 
 				}
+
+
+
 
 			}
 
 			// debe levantar todos los productos disponibles, que ya estan ingresados al stock. . . .
+
+
 
 			// MENSAJES DE VALIDACIONES
 			$data['error_message']		= $error_message;
@@ -83,6 +115,7 @@ class Remitos extends MY_Codeigniter
 
 			$productos 			= $this->get_productos->getAll();
 			$data['productos'] 	= $productos;
+			$data['remito_header']	= $remito_header;
 			// DATOS DE VISTAS
 			$data['id_menu_left'] 	= 'menu_remitos';
 			$data['title']				= 'Control Stock';
@@ -96,6 +129,7 @@ class Remitos extends MY_Codeigniter
 											'../../assets/chosen/chosen.css');
 			$data['js_includes']		= array('frontend/datepicker/datepicker.spanish.js',
 											'frontend/datepicker/jquery-ui.js',
+											'frontend/js/move_header_remito.js',
 											'../../assets/chosen/chosen.jquery.js');
 			// LEVANTO VISTAS
 			$this->load->view('templates/heads', $data);
@@ -110,6 +144,8 @@ class Remitos extends MY_Codeigniter
 
 	/**
 	 * Nos dá los POST de la cabecera del remito.
+	 * También debe consultar si ya existe una variable de session id_remito
+	 * Si es así debe traer los datos para volverlos a imprimir en la vista
 	 *
 	 * @team 	Senaf
 	 * @author 	juampa <jpasosa@gmail.com>
@@ -135,6 +171,11 @@ class Remitos extends MY_Codeigniter
 			$remito['observaciones'] = $this->input->post('observaciones');
 		} else {
 			$remito['observaciones'] = '';
+		}
+
+		if($this->session->userdata('id_remitos') && !isset($_POST['remito_header'])) {
+			$id_remitos = $this->session->userdata('id_remitos');
+			$remito 	= $this->get_remitos->getById($id_remitos);
 		}
 
 		return $remito;

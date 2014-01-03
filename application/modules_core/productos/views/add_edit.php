@@ -14,7 +14,7 @@
 					<a class="close" data-dismiss="alert">×</a>
 					<strong><?php echo $em; ?></strong>
 				</div>
-		<?php endforeach ?>
+		<?php endforeach; ?>
 	<?php endif ?>
 
 	<?php if (isset($message_notice)): ?>

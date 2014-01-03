@@ -2,10 +2,16 @@
 
 #remitos #right form.header_remito {
     float: left;
-    height: 230px;
+    height: 280px;
     width: 100%;
     border-bottom: 1px solid #CCCCCC;
     margin: 20px 0 0 0;
+}
+
+#remitos #right #ocultar_header:hover,
+#remitos #right #mostrar_header:hover
+{
+    cursor: pointer;
 }
 
 #remitos #right .title {

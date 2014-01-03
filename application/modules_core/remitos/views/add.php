@@ -3,32 +3,45 @@
 <div class="col-md-12">
 	<form role="form" class="header_remito" action="<?php echo $form_action; ?>" method="post" enctype="multipart/form-data" >
 		<div class="col-md-6">
+			<?php foreach ($error_message as $em): ?>
+				<div class="alert alert-error fade in add_edit_product">
+					<a class="close" data-dismiss="alert">×</a>
+					<strong><?php echo $em; ?></strong>
+				</div>
+			<?php endforeach; ?>
+
+
 			<div class="form-group">
 				<label for="exampleInputEmail1">Nro Remito</label>
 				<input id="nro_remito" type="text" readonly="readonly" class="form-control" placeholder="Valor Automático" />
 			</div>
+
 			<div class="form-group">
 				<label for="exampleInputPassword1">Fecha</label>
-				<input type="text" name="fecha" class="form-control required" id="fecha" placeholder="Ingrese Fecha" required="required" />
+				<input type="text" name="fecha" value="<?php echo $remito_header['fecha']; ?>" class="form-control required" id="fecha" placeholder="Ingrese Fecha" required="required" />
 			</div>
 
 			<div class="form-group">
 				<label for="exampleInputEmail1">Destino</label>
-				<input type="text" id="destino" name="destino" class="form-control required" placeholder="Area de Destino" required="required">
+				<input type="text" id="destino" name="destino" value="<?php echo $remito_header['destino']; ?>" class="form-control required" placeholder="Area de Destino" required="required">
 			</div>
 		</div>
 
 		<div class="col-md-6">
 			Observaciones
-			<textarea id="observaciones" name="observaciones" class="form-control" rows="4"></textarea>
+			<textarea id="observaciones" name="observaciones" class="form-control" rows="4"><?php echo $remito_header['observaciones']; ?></textarea>
 		</div>
-		<button type="submit" name="remito_header" class="btn btn-default" style="float: right; margin: 35px 20px 0 0;width:130px;">OK</button>
+		<button type="submit" id="button_header" name="remito_header" class="btn btn-default" style="float: right; margin: 35px 20px 0 0;width:130px;">OK</button>
 	</form>
 
 
 	<div class="col-md-12 title">
 
 	</div>
+
+	<div class="col-md-6"></div>
+		<span id="ocultar_header" title="Ocultar Encabezado" class="glyphicon glyphicon-chevron-up"></span>
+		<div class="col-md-6"></div>
 
 	<table class="table  table-condensed">
 		<tr>
