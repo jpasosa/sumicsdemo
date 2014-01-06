@@ -4,6 +4,11 @@
     <div class="out-container">
         <div class="header">
             <div class="top">
+                <a href="<?php echo site_url('homepage');?>">
+                    <div class="image_ministerio">
+                        <img src="<?php echo ASSETS . 'frontend/images/ministerio.png'; ?>" />
+                    </div>
+                </a>
                 <div class="in">
                     <ul class="right_menu">
                         <li class="menu uno"><a class="uno" href="https://Intranet.senaf.gob.ar" target="_blank"> Intranet </a></li>
@@ -12,12 +17,12 @@
                         <li class="menu cuatro"><a class="cuatro" href="#" target="_blank"> Ayuda (F1) </a></li>
                     </ul>
                     <div class="bottom_menu">
-                        <div class="logo">
+                        <!-- <div class="logo">
                             <a href="<?php echo site_url('homepage');?>">
                                 <img class="logo_image" src=" <?php echo ASSETS . 'frontend/images/icono-stock.png'; ?>" alt="stock" title="Stock" width="72" height="50" />
                             </a>
-                            <!-- SUMINISTROS -->
-                        </div>
+                            SUMINISTROS
+                        </div> -->
                         <ul class="menu_principal">
                             <li> <a href="<?php echo site_url('productos/add');?>">Alta de Productos </a></li>
                             <li> <a href="<?php echo site_url('stock_actual/listar');?>">Stock Actual </a></li>
