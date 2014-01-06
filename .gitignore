@@ -17,3 +17,8 @@ application/logs/*
 
 # ARCHIVOS SUBIDOS
 web/uploads/*
+
+#CONFIGURACIONES
+application/config/pag_productos.php
+
+

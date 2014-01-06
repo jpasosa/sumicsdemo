@@ -1,3 +1,3 @@
 <?php if ( ! defined("BASEPATH")) exit("No direct script access allowed");
-							$config["pag_productos"] = 2;
+							$config["pag_productos"] = 10;
 							?>
