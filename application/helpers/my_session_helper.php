@@ -56,6 +56,25 @@ function isAdmin($session){
 		}
 }
 
+/**
+ * Destruye la session del encabezado del remito
+ * si es que existe
+ *
+ * @team 	Allytech
+ * @author 	juampa <jpasosa@gmail.com>
+ * @date 	6 de enero del 2014
+ *
+ * @return      true
+ **/
+function dieSessionRemito($session)
+{
+	if ($session->userdata('id_remitos')) {
+		$session->unset_userdata('id_remitos');
+	}
+
+	return true;
+}
+
 
 
 
