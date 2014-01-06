@@ -104,6 +104,12 @@ body * {
   min-height: 70px;
 }
 
+.out-container .header .top .image_ministerio {
+  height: 30px;
+  float: left;
+  margin: 0 0 0 30px;
+}
+
 .out-container .header .top .in {
   margin: 5px auto 0 auto;
   position: relative;
