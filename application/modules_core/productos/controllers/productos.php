@@ -22,6 +22,9 @@ class Productos extends MY_Codeigniter {
 		$this->data['view_menu_izq']	= 'productos/menu_izq';
 		$this->data['title_section']		= 'PRODUCTOS';
 
+		// Destruyo session de encabezado de los remitos si es que existe.
+		dieSessionRemito($this->session);
+
 		if (!isLogged($this->session)) {
 			redirect('login');
 		}

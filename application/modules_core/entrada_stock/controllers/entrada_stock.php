@@ -15,6 +15,8 @@ class Entrada_stock extends MY_Codeigniter {
 		$last_uri		= $this->uri->total_segments();
 		$this->last_uri	= $this->uri->segment($last_uri);
 
+		// Destruyo session de encabezado de los remitos si es que existe.
+		dieSessionRemito($this->session);
 
 		// DATOS DE VISTAS, EN TODO ENTRADA DE STOCK
 		// $this->data 					= array();

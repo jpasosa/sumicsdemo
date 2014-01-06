@@ -10,6 +10,9 @@ class Stock_actual extends MY_Codeigniter {
 			redirect('login');
 		}
 
+		// Destruyo session de encabezado de los remitos si es que existe.
+		dieSessionRemito($this->session);
+
 		$this->section = $this->router->fetch_class() . '.' . $this->router->fetch_method();
 
 		// DATA DE VISTAS

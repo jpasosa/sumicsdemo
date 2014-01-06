@@ -10,6 +10,9 @@ class Login extends MY_Codeigniter {
 
 		$this->section = $this->router->fetch_class() . '.' . $this->router->fetch_method();
 
+		// Destruyo session de encabezado de los remitos si es que existe.
+		dieSessionRemito($this->session);
+
 		$last_uri		= $this->uri->total_segments();
 		$this->last_uri	= $this->uri->segment($last_uri);
 		$this->last_last_uri	= $this->uri->segment($last_uri - 1);

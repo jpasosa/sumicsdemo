@@ -11,6 +11,10 @@ class Homepage extends MY_Codeigniter
 		$this->section = $this->router->fetch_class() . '.' . $this->router->fetch_method();
 		$this->css_includes				= array('frontend/css/productos.css');
 		// $this->data 					= array();
+
+		// Destruyo session de encabezado de los remitos si es que existe.
+		dieSessionRemito($this->session);
+
 		$this->data['view_menu_izq']	= 'productos/menu_izq';
 		$this->data['title_section']		= 'HOME';
 

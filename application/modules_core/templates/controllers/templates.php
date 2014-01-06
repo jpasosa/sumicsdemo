@@ -9,6 +9,9 @@ class Templates extends MY_Codeigniter
 		parent::__construct();
 		//$this->output->enable_profiler(TRUE);
 
+		// Destruyo session de encabezado de los remitos si es que existe.
+		dieSessionRemito($this->session);
+
 
 	}
 
