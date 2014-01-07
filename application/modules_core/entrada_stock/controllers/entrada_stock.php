@@ -5,7 +5,7 @@ class Entrada_stock extends MY_Codeigniter {
 
 	public function __construct(){
 		parent::__construct();
-
+		$this->load->model('entrada_stock/repo_entradastock');
 		if (!isLogged($this->session)) {
 			redirect('login');
 		}
@@ -55,8 +55,16 @@ class Entrada_stock extends MY_Codeigniter {
 			// GROCERY CRUD
 			$this->load->library('grocery_CRUD');
 			$crud = new grocery_CRUD();
+
 			// LLAMO DESPUES DE HACER EL INSERT EN ENTRADAS
-			$crud->callback_after_insert(array($this, 'insert_trans_entradas'));
+			if($crud->callback_after_insert(array($this, 'insert_trans_entradas'))) {
+				echo 'tengo que trabajar sobre este metodo';
+				echo 'debo trabajar si existiese un error en la carga del stock_actual';
+				// die();
+			} else {
+				echo 'hubo error';
+			}
+
 			// TABLAS
 			$crud->set_subject('Entradas al Stock');
 			$crud->set_theme('flexigrid');
@@ -166,8 +174,17 @@ class Entrada_stock extends MY_Codeigniter {
 	 **/
 	public function insert_trans_entradas($nueva_entrada, $id_entrada)
 	{
+
 		$id_trans 			= $this->action_trans->insertEntradas( $id_entrada );
 		if ($id_trans) {
+			$stock_actual 	= $this->repo_entradastock->updateStockActual($nueva_entrada);
+			return true;
+		} else {
+			// No pudo insertar para guardar el historial, pero igual intenta insertar en stock_actual.
+			$stock_actual 	= $this->repo_entradastock->updateStockActual($nueva_entrada);
+		}
+
+		if ($stock_actual) {
 			return true;
 		} else {
 			return false;

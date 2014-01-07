@@ -80,6 +80,37 @@ class Repo_remitos extends CI_Model
 		}
 	}
 
+	/**
+	 * Inserta item en la tabla remitos_productos
+	 *
+	 * @team 	Senaf
+	 * @author 	juampa <jpasosa@gmail.com>
+	 * @date 	7 de enero
+	 *
+	 * @return      int (0 si no pudo insertar. O el id si insertó correctamente.)
+	 **/
+	public function insertItem($item, $id_remito)
+	{
+		try {
+
+			$data = array(
+					   'id_remitos'		=> $id_remito,
+					   'id_productos' 		=> $item['producto'],
+					   'cantidad' 			=> $item['cantidad']
+					);
+			$this->db->insert('remitos_productos', $data);
+			if ($this->db->affected_rows()) {
+				return (int)$this->db->insert_id();
+			} else {
+				return 0;
+			}
+
+		} catch (Exception $e) {
+			return 0;
+		}
+
+	}
+
 
 	/**
 	 * Hace un update de la tabla remitos
@@ -104,6 +135,42 @@ class Repo_remitos extends CI_Model
 
 		$this->db->where('id_remitos', $id_remito);
 		$this->db->update('remitos', $data);
+	}
+
+	/**
+	 * Nos devuelve todos los items que están cargados hasta el momento.
+	 *
+	 * @team 	Senaf
+	 * @author 	juampa <jpasosa@gmail.com>
+	 * @date 	7 de enero del 2014
+	 *
+	 * @return      Array()
+	 **/
+	public function getAllItems($id_remitos)
+	{
+		try {
+
+			$sql = "SELECT *
+					FROM remitos_productos RP
+					INNER JOIN remitos R
+						ON RP.id_remitos=R.id_remitos
+					INNER JOIN productos P
+						ON RP.id_productos=P.id_productos
+					WHERE RP.id_remitos = $id_remitos
+						AND R.en_proceso = 1";
+			$q 		= $this->db->query($sql);
+			$result	= $q->result_array();
+
+			if ( count($result) > 0) {
+				return $result;
+			} else {
+				return NULL;
+			}
+
+		} catch (Exception $e) {
+			return NULL;
+		}
+
 	}
 
 

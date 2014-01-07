@@ -80,7 +80,7 @@
 
 
 	<!-- ICO -->
-	<link rel="icon" href="<?php echo ASSETS . 'frontend/images/favicon.ico'; ?>  " type="image/vnd.microsoft.icon" />
+	<link rel="icon" href="<?php echo ASSETS . 'frontend/images/arg.png'; ?>  " type="image/vnd.microsoft.icon" />
 
 
 

@@ -19,6 +19,12 @@ class Remitos extends MY_Codeigniter
 		}
 	}
 
+	public function __destruct()
+	{
+		echo 'destructor';
+		die();
+	}
+
 	public function index()
 	{
 		try {
@@ -87,16 +93,28 @@ class Remitos extends MY_Codeigniter
 							$remito_header = $this->getDataRemitoHeader();
 						}
 					}
-
-
-
 				}
+
 
 				// Estoy agregando items al remito
 				if (isset($_POST['agregar']))
 				{
+
+
+
 					$item = $this->getDataItems();
 
+					if ($this->session->userdata('id_remitos'))
+					{
+						$id_remitos 	= $this->session->userdata('id_remitos');
+						$insert_item 	= $this->repo_remitos->insertItem($item, $id_remitos);
+						if ($insert_item == 0) {
+							$error_message['noinserto'] = "No pudo insertar el item seleccionado";
+						}
+
+					} else {
+						$error_message['cabecer'] = "Primero debe cargar los datos de cabecera.";
+					}
 
 				}
 
@@ -105,17 +123,22 @@ class Remitos extends MY_Codeigniter
 
 			}
 
-			// debe levantar todos los productos disponibles, que ya estan ingresados al stock. . . .
-
+			if ($this->session->userdata('id_remitos')) {
+				$id_remitos = $this->session->userdata('id_remitos');
+				$items = $this->repo_remitos->getAllItems($id_remitos);
+			} else {
+				$items = array();
+			}
 
 
 			// MENSAJES DE VALIDACIONES
 			$data['error_message']		= $error_message;
 
 
-			$productos 			= $this->get_productos->getAll();
-			$data['productos'] 	= $productos;
+			$productos 				= $this->get_productos->getAll();
+			$data['productos'] 		= $productos;
 			$data['remito_header']	= $remito_header;
+			$data['items']			= $items;
 			// DATOS DE VISTAS
 			$data['id_menu_left'] 	= 'menu_remitos';
 			$data['title']				= 'Control Stock';

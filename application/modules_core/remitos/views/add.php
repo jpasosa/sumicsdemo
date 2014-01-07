@@ -49,16 +49,18 @@
 			<th width="70%"><strong>PRODUCTOS</strong></th>
 			<th width="20%"><strong>CANTIDAD</strong></th>
 		</tr>
-		<tr>
-			<td>1</td>
-			<td>descripcion</td>
-			<td>150</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>descripcion</td>
-			<td>350</td>
-		</tr>
+
+		<?php if (count($items) > 0): ?>
+			<?php foreach ($items AS $k => $it): ?>
+				<tr>
+					<td><?php echo $k+1; ?></td>
+					<td><?php echo $it['codigo'] . ' :: ' . $it['descripcion'] . ' :: ' . $it['detalle']; ?></td>
+					<td><?php echo $it['cantidad']; ?></td>
+				</tr>
+			<?php endforeach; ?>
+		<?php endif; ?>
+
+
 		<tr>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>

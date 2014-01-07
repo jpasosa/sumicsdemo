@@ -6,7 +6,7 @@
             <div class="top">
                 <a href="<?php echo site_url('homepage');?>">
                     <div class="image_ministerio">
-                        <img src="<?php echo ASSETS . 'frontend/images/ministerio.png'; ?>" />
+                        <img src="<?php echo ASSETS . 'frontend/images/ministerio2.png'; ?>" />
                     </div>
                 </a>
                 <div class="in">
