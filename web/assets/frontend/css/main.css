@@ -108,6 +108,7 @@ body * {
   height: 30px;
   float: left;
   margin: 0 0 0 120px;
+  padding-top: 13px;
 }
 
 .out-container .header .top .in {
