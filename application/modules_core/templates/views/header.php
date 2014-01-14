@@ -33,32 +33,32 @@
 								</div>
 						</div>
 						<div class="bottom">
-								<div class="in">
-									<div>
-										<h1>
-											Control de Stock   &nbsp;&nbsp;&nbsp;
-											<span style="color: #D82133;">
-												[ <?php echo $title_section; ?> ]
-											</span>
-											<?php if (isset( $login ) && $login): ?>
-												<!-- OPCIONES DEL USUARIO -->
-												<div class="dropdown perfil_usuario">
-													<a data-toggle="dropdown" href="#">Bienvenido <?php echo $this->session->userdata('nombre'); ?> <b class="caret"></b></a>
-													<ul class="dropdown-menu" role="menu">
-														<li><a href="#">Perfil</a></li>
-														<li><a href="#">Historial Acciones</a></li>
-														<li role="presentation" class="divider"></li>
-														<li><a href="<?php echo site_url('login/salir');?>">Salir</a></li>
-													</ul>
-												</div>
-											<?php else: ?>
-												<div class="login">
-														<a href="<?php echo site_url('login');?>" > I N G R E S A R </a>
-												</div>
-											<?php endif; ?>
-										</h1>
-									</div>
+							<div class="in">
+								<div>
+									<h1>
+										Control de Stock   &nbsp;&nbsp;&nbsp;
+										<span style="color: #D82133;">
+											[ <?php echo $title_section; ?> ]
+										</span>
+										<?php if (isset( $login ) && $login): ?>
+											<!-- OPCIONES DEL USUARIO -->
+											<div class="dropdown perfil_usuario">
+												<a data-toggle="dropdown" href="#">Bienvenido <?php echo $this->session->userdata('nombre'); ?> <b class="caret"></b></a>
+												<ul class="dropdown-menu" role="menu">
+													<li><a href="#">Perfil</a></li>
+													<li><a href="#">Historial Acciones</a></li>
+													<li role="presentation" class="divider"></li>
+													<li><a href="<?php echo site_url('login/salir');?>">Salir</a></li>
+												</ul>
+											</div>
+										<?php else: ?>
+											<div class="login">
+													<a href="<?php echo site_url('login');?>" > I N G R E S A R </a>
+											</div>
+										<?php endif; ?>
+									</h1>
 								</div>
+							</div>
 						</div>
 				</div>
 

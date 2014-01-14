@@ -1,26 +1,23 @@
 
 <div class="row">
 <div class="col-md-12">
-	<form role="form" class="header_remito" action="<?php echo $form_action; ?>" method="post" enctype="multipart/form-data" >
+	<?php foreach ($error_message as $em): ?>
+		<div class="alert alert-error fade in add_edit_product">
+			<a class="close" data-dismiss="alert">×</a>
+			<strong><?php echo $em; ?></strong>
+		</div>
+	<?php endforeach; ?>
+	<form role="form" class="header_remito" action="<?php echo $form_action; ?>" method="post"
+		enctype="multipart/form-data" style="<?php if ($oculto_header == 1): echo "display: none;"; endif; ?>">
 		<div class="col-md-6">
-			<?php foreach ($error_message as $em): ?>
-				<div class="alert alert-error fade in add_edit_product">
-					<a class="close" data-dismiss="alert">×</a>
-					<strong><?php echo $em; ?></strong>
-				</div>
-			<?php endforeach; ?>
-
-
 			<div class="form-group">
 				<label for="exampleInputEmail1">Nro Remito</label>
 				<input id="nro_remito" type="text" readonly="readonly" class="form-control" placeholder="Valor Automático" />
 			</div>
-
 			<div class="form-group">
 				<label for="exampleInputPassword1">Fecha</label>
 				<input type="text" name="fecha" value="<?php echo $remito_header['fecha']; ?>" class="form-control required" id="fecha" placeholder="Ingrese Fecha" required="required" />
 			</div>
-
 			<div class="form-group">
 				<label for="exampleInputEmail1">Destino</label>
 				<input type="text" id="destino" name="destino" value="<?php echo $remito_header['destino']; ?>" class="form-control required" placeholder="Area de Destino" required="required">
@@ -40,7 +37,12 @@
 	</div>
 
 	<div class="col-md-6"></div>
-		<span id="ocultar_header" title="Ocultar Encabezado" class="glyphicon glyphicon-chevron-up"></span>
+		<?php if ($oculto_header == 1): ?>
+			<span id="mostrar_header" title="Ocultar Encabezado" class="glyphicon glyphicon-chevron-down"></span>
+		<?php else: ?>
+			<span id="ocultar_header" title="Ocultar Encabezado" class="glyphicon glyphicon-chevron-up"></span>
+		<?php endif; ?>
+
 		<div class="col-md-6"></div>
 
 	<table class="table  table-condensed">
@@ -74,6 +76,7 @@
 	</table>
 
 	<form role="form" action="<?php echo $form_action; ?>" method="post" enctype="multipart/form-data" >
+		<input type="hidden" id="oculto_header" name="oculto_header" value="<?php echo $oculto_header ?>">
 		<div class="items">
 			<div class="col-md-12">
 				<div class="col-md-4">

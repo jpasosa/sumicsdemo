@@ -266,17 +266,17 @@ body * {
 
 .out-container .header .bottom .in .login a{
 	background: none repeat scroll 0 0 #D82133;
-		box-shadow: 0 1px 4px #A9A7A7;
-		color: #FFFFFF;
-		display: block;
-		font-size: 14px;
-		font-weight: bold;
-		line-height: 35px;
-		margin-top: 3px;
-		text-align: center;
-		text-transform: uppercase;
-		width: 150px;
-		text-decoration: none;
+	box-shadow: 0 1px 4px #A9A7A7;
+	color: #FFFFFF;
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 35px;
+	margin-top: 3px;
+	text-align: center;
+	text-transform: uppercase;
+	width: 180px;
+	text-decoration: none;
 }
 
 .out-container .header .bottom .in .logout a{

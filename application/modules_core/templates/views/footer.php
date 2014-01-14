@@ -12,8 +12,3 @@
 </html> <!-- cierra html que esta en heads.php -->
 
 
-<script type="text/javascript">
-$('#openBtn').click(function(){
-	$('#myModal').modal({show:true})
-});
-</script>

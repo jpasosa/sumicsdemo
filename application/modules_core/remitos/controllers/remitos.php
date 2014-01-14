@@ -88,6 +88,7 @@ class Remitos extends MY_Codeigniter
 				// Datos de cabecera del remito.
 				if (isset($_POST['remito_header']))
 				{
+					$oculto_header 	= 0;
 					// Valido la cabecera del remito.
 					$validate_header = $this->repo_remitos->validate($remito_header);
 					if (count($validate_header) > 0) {
@@ -114,8 +115,7 @@ class Remitos extends MY_Codeigniter
 				// Estoy agregando items al remito
 				if (isset($_POST['agregar']))
 				{
-
-
+					$oculto_header = (int)$this->input->post('oculto_header');
 
 					$item = $this->getDataItems();
 
@@ -133,9 +133,6 @@ class Remitos extends MY_Codeigniter
 
 				}
 
-
-
-
 			}
 
 			if ($this->session->userdata('id_remitos')) {
@@ -145,6 +142,9 @@ class Remitos extends MY_Codeigniter
 				$items = array();
 			}
 
+			if (!isset($oculto_header)) {
+				$oculto_header = 0;
+			}
 
 			// MENSAJES DE VALIDACIONES
 			$data['error_message']		= $error_message;
@@ -155,6 +155,8 @@ class Remitos extends MY_Codeigniter
 			$data['remito_header']	= $remito_header;
 			$data['items']			= $items;
 			// DATOS DE VISTAS
+
+			$data['oculto_header']	= $oculto_header;
 			$data['id_menu_left'] 	= 'menu_remitos';
 			$data['title']				= 'Control Stock';
 			$data['id_content']		= 'remitos';
