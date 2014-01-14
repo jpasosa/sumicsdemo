@@ -13,7 +13,7 @@ class Action_usuarios extends CI_Model
 	public function validate($usuario) {
 		try {
 				$query = $this->db->query("
-											SELECT U.id_usuario, U.email, R.id_rol
+											SELECT U.id_usuario, U.email, R.id_rol, U.nombre
 											FROM usuarios U
 											INNER JOIN roles R
 												ON U.id_rol=R.id_rol

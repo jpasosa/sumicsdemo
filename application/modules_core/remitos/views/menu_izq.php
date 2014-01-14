@@ -12,7 +12,7 @@
 <?php endif; ?>
 
 <?php if ( isset($show_list) && $show_list ): ?>
-	<a href="<?php echo site_url('productos/listar');?>">
+	<a href="<?php echo site_url('remitos/listar');?>">
 		<img class="list" src="<?php echo ASSETS . 'frontend/images/icons/list.png'; ?>" alt="listar" title="Listar Productos" width="85" height="85" />
 	</a>
 <?php endif;?>

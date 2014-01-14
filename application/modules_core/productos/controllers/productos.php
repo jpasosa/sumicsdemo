@@ -125,7 +125,7 @@ class Productos extends MY_Codeigniter {
 				$filter['category_filter'] 	= true;
 				$filter['category_id'] 		= $this->uri->segment(4);
 				$data['filter_category']	= $this->uri->segment(4);
-				$base 					= base('productos/listar/cat/') .$filter['category_id'] . '/page';
+				$base 					= base_url('productos/listar/cat/') .$filter['category_id'] . '/page';
 				$total_rows 			= $this->action_productos->countAllByCategory($filter['category_id']);
 				$uri_segment 			= 6;
 			}

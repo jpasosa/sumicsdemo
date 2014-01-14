@@ -6,8 +6,28 @@ class Entrada_stock extends MY_Codeigniter {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('entrada_stock/repo_entradastock');
+
 		if (!isLogged($this->session)) {
 			redirect('login');
+		} else {
+
+
+
+			//
+			// Debagueo un objeto / arreglo / variable
+			//
+			echo ' <br/> <div style="font-weight: bold; color: green;"> $this->session->all_userdata(): </div> <pre>' ;
+			echo '<div style="color: #3741c6;">';
+			if(is_array($this->session->all_userdata())) {
+			    print_r($this->session->all_userdata());
+			}else {
+			var_dump($this->session->all_userdata());
+			}
+			echo '</div>';
+			echo '</pre>';
+			die('--FIN--DEBUGEO----');
+
+			// $this->session->set_userdata('nombre', )
 		}
 
 		$this->section = $this->router->fetch_class() . '.' . $this->router->fetch_method();
@@ -58,8 +78,8 @@ class Entrada_stock extends MY_Codeigniter {
 
 			// LLAMO DESPUES DE HACER EL INSERT EN ENTRADAS
 			if($crud->callback_after_insert(array($this, 'insert_trans_entradas'))) {
-				echo 'tengo que trabajar sobre este metodo';
-				echo 'debo trabajar si existiese un error en la carga del stock_actual';
+				// echo 'tengo que trabajar sobre este metodo';
+				// echo 'debo trabajar si existiese un error en la carga del stock_actual';
 				// die();
 			} else {
 				echo 'hubo error';

@@ -10,3 +10,10 @@
 		</div> <!-- cierra div class out-container, que esta en header.php -->
 	</body> <!-- cierra body que está en header.php -->
 </html> <!-- cierra html que esta en heads.php -->
+
+
+<script type="text/javascript">
+$('#openBtn').click(function(){
+	$('#myModal').modal({show:true})
+});
+</script>

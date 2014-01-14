@@ -11,7 +11,8 @@ class Remitos extends MY_Codeigniter
 		$this->load->library('session');
 		$this->load->helper('date');
 		// $this->css_includes				= array('frontend/css/remitos.css');
-		$this->data['view_menu_izq']	= 'productos/menu_izq';
+		$this->data['view_menu_izq']	= 'remitos/menu_izq';
+		$this->data['configure_link']	= 'remitos/configuracion';
 		$this->data['title_section']		= 'REMITOS';
 		$this->data['js_includes']		= array();
 		if (!isLogged($this->session)) {
@@ -37,7 +38,21 @@ class Remitos extends MY_Codeigniter
 	public function listar()
 	{
 		try {
+			echo 'lista de los remitos';
+			die();
 
+		} catch (Exception $e) {
+			throw new Exception($e->getMessage());
+		}
+	}
+
+
+
+	public function configuracion()
+	{
+		try {
+			echo 'configuracion de los remitos';
+			die();
 
 		} catch (Exception $e) {
 			throw new Exception($e->getMessage());
@@ -145,8 +160,7 @@ class Remitos extends MY_Codeigniter
 			$data['id_content']		= 'remitos';
 			$data['view_template']	= 'remitos/add';
 			$data['show_list']		= true;
-			$data['show_add']		= true;
-			$data['configure_link']	= true;
+			$data['show_add']		= false;
 			$data['configure_link_title']= 'Configuraciones Remitos';
 			$data['css_includes']	= array('frontend/css/remitos.css', 'frontend/datepicker/jquery-ui.css',
 											'../../assets/chosen/chosen.css');
@@ -164,6 +178,11 @@ class Remitos extends MY_Codeigniter
 			throw new Exception($e->getMessage());
 		}
 	}
+
+
+
+
+
 
 	/**
 	 * Nos dá los POST de la cabecera del remito.

@@ -8,7 +8,8 @@ function fillSession($data,$session){
 		$my_data = array(
 					'id_usuario' 	=> $data['id_usuario'],
 					'email' 		=> $data['email'],
-					'id_rol' 		=> $data['id_rol']
+					'id_rol' 		=> $data['id_rol'],
+					'nombre'	=> $data['nombre']
 					);
 		$session->set_userdata($my_data);
 		unset($data);

@@ -24,7 +24,6 @@ class Templates extends MY_Codeigniter
 
 	public function heads()
 	{
-		die('pepe');
 		$this->load->view('templates/heads', $data);
 
 

@@ -15,6 +15,10 @@ class Homepage extends MY_Codeigniter
 		// Destruyo session de encabezado de los remitos si es que existe.
 		dieSessionRemito($this->session);
 
+
+
+		// $this->load->model();
+
 		$this->data['view_menu_izq']	= 'productos/menu_izq';
 		$this->data['title_section']		= 'HOME';
 
@@ -28,6 +32,7 @@ class Homepage extends MY_Codeigniter
 		$data['id_content']		= 'homepage';
 		$data['view_template']	= 'homepage/homepage';
 		$data['css_includes']	= $this->css_includes;
+
 
 		// VISTAS
 		$this->load->view('templates/heads', $data);
