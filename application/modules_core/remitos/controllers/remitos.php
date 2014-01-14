@@ -81,7 +81,6 @@ class Remitos extends MY_Codeigniter
 			// $data['categorys'] 		= $this->get_categorias->getAll();
 
 			$productos 				= $this->repo_remitos->getAllStock();
-			$data['productos'] 		= $productos;
 
 			$remito_header = $this->getDataRemitoHeader();
 
@@ -129,15 +128,6 @@ class Remitos extends MY_Codeigniter
 							$insert_item 	= $this->repo_remitos->insertItem($item, $id_remitos);
 							if ($insert_item == 0) {
 								$error_message['noinserto'] = "No pudo insertar el item seleccionado";
-							} else {
-								// Se insertó con éxito, debo sacar de la lista de posibles productos seleccionables.
-								foreach($productos AS $k=>$pr)
-								{
-									if ($pr['id_productos'] == $item['producto']) {
-										unset($productos[$k]);
-									}
-								}
-
 							}
 						} else {
 							$error_message['max'] = $validate_item;
@@ -153,8 +143,19 @@ class Remitos extends MY_Codeigniter
 			}
 
 			if ($this->session->userdata('id_remitos')) {
+				// Debe sacar del select, los productos que ya están seleccionados.
 				$id_remitos = $this->session->userdata('id_remitos');
 				$items = $this->repo_remitos->getAllItems($id_remitos);
+				$prod_cargados = Array();
+				foreach($items AS $k=>$item) { // Cargo todos los id_productos que tengo en los items
+					$prod_cargados[$k] = $item['id_productos'];
+				}
+				foreach($productos AS $k=>$pr)
+				{
+					if (in_array($pr['id_productos'], $prod_cargados)) {
+						unset($productos[$k]);
+					}
+				}
 			} else {
 				$items = array();
 			}
@@ -172,7 +173,7 @@ class Remitos extends MY_Codeigniter
 			$data['remito_header']	= $remito_header;
 			$data['items']			= $items;
 			// DATOS DE VISTAS
-
+			$data['productos']		= $productos;
 			$data['oculto_header']	= $oculto_header;
 			$data['id_menu_left'] 	= 'menu_remitos';
 			$data['title']				= 'Control Stock';
