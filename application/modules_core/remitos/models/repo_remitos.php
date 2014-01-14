@@ -173,6 +173,82 @@ class Repo_remitos extends CI_Model
 
 	}
 
+	/**
+	 * Nos devuelve todos los productos disponibles en el stock
+	 *
+	 * @team 	Senaf
+	 * @author 	juampa <jpasosa@gmail.com>
+	 * @date 	14 de enero del 2014
+	 *
+	 * @return      Array()
+	 **/
+	public function getAllStock()
+	{
+
+		try {
+
+			$sql 	= "	SELECT *
+						FROM stock_actual SA
+						INNER JOIN productos P
+							ON SA.id_productos=P.id_productos
+						WHERE SA.activo=1
+						";
+			$q 		= $this->db->query($sql);
+			$result	= $q->result_array();
+
+			if ( count($result) > 0) {
+				return $result;
+			} else {
+				return NULL;
+			}
+
+		} catch (Exception $e) {
+			echo $e->getMessage();
+			exit(1);
+		}
+	}
+
+
+	/**
+	 * Va a controlar que haya la cantidad suficiente en stock.
+	 *
+	 * @team 	Senaf
+	 * @author 	juampa <jpasosa@gmail.com>
+	 * @date 	14 de enero del 2014
+	 *
+	 * @return      array() vacio si no hay errores. Si no, nos dice el mensaje del error
+	 **/
+	public function validateItem($item)
+	{
+
+		try {
+			$error = array();
+
+			$data = array(
+						   'id_productos' 		=> $item['producto'],
+						   'cantidad' 			=> $item['cantidad']
+						);
+			$query 	= $this->db->get_where('stock_actual', array('id_productos' => $data['id_productos']));
+			$result 	= $query->result_array();
+
+			if (isset($result[0]) && $result[0]['activo'] == 1) {
+				$qty 	= $result[0]['cantidad'];
+				if ($qty >= $data['cantidad']) {
+					return array();
+				} else {
+					return $error['max'] = 'La cantidad disponibles en stock es de ' . $qty . ' para dicho producto.';
+				}
+			} else {
+				return false;
+			}
+
+
+		} catch (Exception $e) {
+			echo $e->getMessage();
+			exit(1);
+		}
+	}
+
 
 
 

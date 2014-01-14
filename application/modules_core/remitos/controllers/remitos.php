@@ -80,6 +80,9 @@ class Remitos extends MY_Codeigniter
 			$data['form_action'] 	= site_url('remitos/agregar/');
 			// $data['categorys'] 		= $this->get_categorias->getAll();
 
+			$productos 				= $this->repo_remitos->getAllStock();
+			$data['productos'] 		= $productos;
+
 			$remito_header = $this->getDataRemitoHeader();
 
 			if ( $this->input->server('REQUEST_METHOD') == 'POST' )
@@ -116,21 +119,35 @@ class Remitos extends MY_Codeigniter
 				if (isset($_POST['agregar']))
 				{
 					$oculto_header = (int)$this->input->post('oculto_header');
-
 					$item = $this->getDataItems();
-
 					if ($this->session->userdata('id_remitos'))
 					{
-						$id_remitos 	= $this->session->userdata('id_remitos');
-						$insert_item 	= $this->repo_remitos->insertItem($item, $id_remitos);
-						if ($insert_item == 0) {
-							$error_message['noinserto'] = "No pudo insertar el item seleccionado";
+						$id_remitos = $this->session->userdata('id_remitos');
+						// Validación. Debe controlar que haya la cantidad suficiente.
+						$validate_item 	= $this->repo_remitos->validateItem($item);
+						if (count($validate_item) == 0) {
+							$insert_item 	= $this->repo_remitos->insertItem($item, $id_remitos);
+							if ($insert_item == 0) {
+								$error_message['noinserto'] = "No pudo insertar el item seleccionado";
+							} else {
+								// Se insertó con éxito, debo sacar de la lista de posibles productos seleccionables.
+								foreach($productos AS $k=>$pr)
+								{
+									if ($pr['id_productos'] == $item['producto']) {
+										unset($productos[$k]);
+									}
+								}
+
+							}
+						} else {
+							$error_message['max'] = $validate_item;
 						}
+
 
 					} else {
 						$error_message['cabecer'] = "Primero debe cargar los datos de cabecera.";
 					}
-
+					$data['productos'] = $productos;
 				}
 
 			}
@@ -150,8 +167,8 @@ class Remitos extends MY_Codeigniter
 			$data['error_message']		= $error_message;
 
 
-			$productos 				= $this->get_productos->getAll();
-			$data['productos'] 		= $productos;
+
+
 			$data['remito_header']	= $remito_header;
 			$data['items']			= $items;
 			// DATOS DE VISTAS
