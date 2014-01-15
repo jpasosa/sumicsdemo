@@ -36,7 +36,7 @@
 							<div class="in">
 								<div>
 									<h1>
-										Control de Stock   &nbsp;&nbsp;&nbsp;
+										Saramago 14.01   &nbsp;&nbsp;&nbsp;
 										<span style="color: #D82133;">
 											[ <?php echo $title_section; ?> ]
 										</span>
