@@ -72,7 +72,7 @@ class Entrada_stock extends MY_Codeigniter {
 			$crud->set_subject('Entradas al Stock');
 			$crud->set_theme('flexigrid');
 			$crud->set_table('entradas');
-			$fields = array('fecha_created', 'id_productos','id_tipodocumento','nro_tipodocumento','precio', 'cantidad', 'observaciones');
+			$fields = array('fecha_created', 'id_productos','id_tipodocumento','nro_tipodocumento','precio', 'cantidad', 'ubicacion', 'observaciones');
 			$crud->columns($fields);
 			// RELACIONES
 			if ($this->last_uri == 'add') {
@@ -96,7 +96,7 @@ class Entrada_stock extends MY_Codeigniter {
 					->display_as('observaciones','Observaciones');
 
 			// Validaciones
-			$crud->required_fields('fecha_created', 'id_productos','id_tipodocumento','nro_tipodocumento','precio', 'cantidad');
+			$crud->required_fields('fecha_created', 'id_productos','id_tipodocumento','nro_tipodocumento','precio', 'cantidad', 'ubicacion');
 			$crud->set_rules('precio','Precio','numeric|required');
 
 			$crud->field_type( 'observaciones' , 'text' );

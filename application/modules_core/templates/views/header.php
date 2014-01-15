@@ -23,11 +23,11 @@
 														SUMINISTROS
 												</div> -->
 												<ul class="menu_principal">
-														<li> <a href="<?php echo site_url('productos/add');?>">Alta de Productos </a></li>
-														<li> <a href="<?php echo site_url('stock_actual/listar');?>">Stock Actual </a></li>
-														<li> <a href="<?php echo site_url('entrada_stock/nueva_entrada');?>">Entrada de Stock </a></li>
-														<li> <a href="<?php echo site_url('remitos/agregar');?>">Remitos </a></li>
-														<li> <a href="#">Consultas </a></li>
+														<li> <a href="<?php echo site_url('productos/add');?>">ALTA DE PRODUCTOS </a></li>
+														<li> <a href="<?php echo site_url('stock_actual/listar');?>">STOCK ACTUAL </a></li>
+														<li> <a href="<?php echo site_url('entrada_stock/nueva_entrada');?>">INGRESOS </a></li>
+														<li> <a href="<?php echo site_url('remitos/agregar');?>">REMITOS </a></li>
+														<!-- <li> <a href="#">Consultas </a></li> -->
 												</ul>
 										</div>
 								</div>
