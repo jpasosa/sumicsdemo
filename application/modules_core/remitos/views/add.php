@@ -49,7 +49,8 @@
 		<tr>
 			<th width="10%"><strong>ITEM</strong></th>
 			<th width="70%"><strong>PRODUCTOS</strong></th>
-			<th width="20%"><strong>CANTIDAD</strong></th>
+			<th width="10%"><strong>CANTIDAD</strong></th>
+			<th width="10%"><strong></strong></th>
 		</tr>
 
 		<?php if (count($items) > 0): ?>
@@ -57,7 +58,12 @@
 				<tr>
 					<td><?php echo $k+1; ?></td>
 					<td><?php echo $it['codigo'] . ' :: ' . $it['descripcion'] . ' :: ' . $it['detalle']; ?></td>
-					<td><?php echo $it['cantidad']; ?></td>
+					<td style="text-align:center;"><?php echo $it['cantidad']; ?></td>
+					<td class="erase">
+						<a href="<?php echo $form_action . '/' . $it['id_remitos_productos'] . '/' . $oculto_header; ?>" class="del_remito" >
+							<span title="Sacar Item" class="glyphicon glyphicon-remove"></span>
+						</a>
+					</td>
 				</tr>
 			<?php endforeach; ?>
 		<?php endif; ?>
@@ -67,8 +73,10 @@
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
+			<td>&nbsp;</td>
 		</tr>
 		<tr>
+			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
@@ -114,6 +122,9 @@
 
 
 </div>
+
+
+
 
 
 

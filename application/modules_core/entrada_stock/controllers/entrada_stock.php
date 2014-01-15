@@ -10,23 +10,6 @@ class Entrada_stock extends MY_Codeigniter {
 		if (!isLogged($this->session)) {
 			redirect('login');
 		} else {
-
-
-
-			//
-			// Debagueo un objeto / arreglo / variable
-			//
-			echo ' <br/> <div style="font-weight: bold; color: green;"> $this->session->all_userdata(): </div> <pre>' ;
-			echo '<div style="color: #3741c6;">';
-			if(is_array($this->session->all_userdata())) {
-			    print_r($this->session->all_userdata());
-			}else {
-			var_dump($this->session->all_userdata());
-			}
-			echo '</div>';
-			echo '</pre>';
-			die('--FIN--DEBUGEO----');
-
 			// $this->session->set_userdata('nombre', )
 		}
 

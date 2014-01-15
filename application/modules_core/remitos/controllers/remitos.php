@@ -69,7 +69,7 @@ class Remitos extends MY_Codeigniter
 	 *
 	 * @return      void
 	 **/
-	public function agregar()
+	public function agregar($id_remitos_productos_del = NULL, $oculto_header = 0) // En caso de querer borrar un item, lo voy a mandar por GET
 	{
 		try {
 
@@ -81,6 +81,10 @@ class Remitos extends MY_Codeigniter
 			// $data['categorys'] 		= $this->get_categorias->getAll();
 
 			$productos 				= $this->repo_remitos->getAllStock();
+
+			if ($id_remitos_productos_del != NULL) {
+				$this->repo_remitos->eraseItem($id_remitos_productos_del);
+			}
 
 			$remito_header = $this->getDataRemitoHeader();
 
@@ -140,12 +144,18 @@ class Remitos extends MY_Codeigniter
 					$data['productos'] = $productos;
 				}
 
+
 			}
 
-			if ($this->session->userdata('id_remitos')) {
+			if ($this->session->userdata('id_remitos')) // Ya está completando items del remito.
+			{
 				// Debe sacar del select, los productos que ya están seleccionados.
 				$id_remitos = $this->session->userdata('id_remitos');
+
+
 				$items = $this->repo_remitos->getAllItems($id_remitos);
+
+
 				$prod_cargados = Array();
 				foreach($items AS $k=>$item) { // Cargo todos los id_productos que tengo en los items
 					$prod_cargados[$k] = $item['id_productos'];
@@ -158,10 +168,6 @@ class Remitos extends MY_Codeigniter
 				}
 			} else {
 				$items = array();
-			}
-
-			if (!isset($oculto_header)) {
-				$oculto_header = 0;
 			}
 
 			// MENSAJES DE VALIDACIONES
@@ -271,6 +277,7 @@ class Remitos extends MY_Codeigniter
 
 		return $item;
 	}
+
 
 
 

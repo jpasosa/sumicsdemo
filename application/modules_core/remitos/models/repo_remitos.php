@@ -164,7 +164,7 @@ class Repo_remitos extends CI_Model
 			if ( count($result) > 0) {
 				return $result;
 			} else {
-				return NULL;
+				return array();
 			}
 
 		} catch (Exception $e) {
@@ -247,6 +247,34 @@ class Repo_remitos extends CI_Model
 			echo $e->getMessage();
 			exit(1);
 		}
+	}
+
+
+	/**
+	 * Elimina un item de los remitos. Llamado por AJAX.
+	 *
+	 * @team 	Senaf
+	 * @author 	juampa <jpasosa@gmail.com>
+	 * @date 	15 de enero del 2014
+	 *
+	 * @return      boolean
+	 **/
+	public function eraseItem($id_remitos_productos)
+	{
+		try {
+			$this->db->delete('remitos_productos', array('id_remitos_productos' => $id_remitos_productos));
+			if ($this->db->affected_rows()) {
+				return true;
+			} else {
+				return false;
+			}
+
+
+		} catch (Exception $e) {
+			echo $e->getMessage();
+			exit(1);
+		}
+
 	}
 
 

@@ -40,6 +40,15 @@
 }
 
 
+/*Boton de sacar el item.*/
+#remitos #right table tr td.erase a {
+	color: #999999;
+}
+#remitos #right table tr td.erase a:hover {
+	color: #000000;
+}
+
+
 
 
 
