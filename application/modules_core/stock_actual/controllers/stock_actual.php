@@ -10,6 +10,8 @@ class Stock_actual extends MY_Codeigniter {
 			redirect('login');
 		}
 
+		$this->load->model('stock_actual/stockactual_model');
+
 		// Destruyo session de encabezado de los remitos si es que existe.
 		dieSessionRemito($this->session);
 
@@ -57,6 +59,7 @@ class Stock_actual extends MY_Codeigniter {
 			$data['show_in']		= true;
 			$data['show_out']		= true;
 			$data['css_includes']	= $this->css_includes;
+			$data['href_modal'] 			= site_url('stock_actual/memo/');
 			// $data['js_includes']		= array('frontend/js/del_product.js');
 			// LEVANTO VISTAS
 			$this->load->view('templates/heads', $data);
@@ -133,6 +136,27 @@ class Stock_actual extends MY_Codeigniter {
 			throw new Exception($e->getMessage());
 		}
 
+	}
+
+
+
+	/**
+	 * Es el modal, para agregarle o editar el memorandum del producto actual en stock
+	 *
+	 * @team 	Senaf
+	 * @author 	juampa <jpasosa@gmail.com>
+	 * @date 	16 de enero del 2014
+	 *
+	 * @return      void()
+	 **/
+	public function memo($id_stockactual)
+	{
+
+		$stock = $this->stockactual_model->getStockActual($id_stockactual);
+		$data['stock'] 	= $stock;
+
+		// LEVANTO VISTAS
+		$this->load->view('stock_actual/modal_memo', $data);
 	}
 
 

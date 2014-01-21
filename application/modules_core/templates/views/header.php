@@ -47,6 +47,7 @@
 												<ul class="dropdown-menu" role="menu">
 													<li><a href="#">Perfil</a></li>
 													<li><a href="#">Historial Acciones</a></li>
+													<li><a href="#">Cambio de Clave</a></li>
 													<li role="presentation" class="divider"></li>
 													<li><a href="<?php echo site_url('login/salir');?>">Salir</a></li>
 												</ul>

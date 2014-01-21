@@ -21,7 +21,7 @@ class MY_Codeigniter extends MX_Controller {
 			$data['login']	= true;
 		}
 
-
+		$data['menu']	= 'este es el menu';
 
 		$this->data = $data;
 

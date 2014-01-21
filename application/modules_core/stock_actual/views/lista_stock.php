@@ -61,7 +61,18 @@
 				<td><?php echo $sa['detalle']; ?></td>
 				<td><?php echo $sa['cantidad']; ?></td>
 				<td>
-					<a href="#"><?php echo $sa['memo']; ?></a>
+
+						<?php if ($sa['memo'] == ''): ?>
+							<!-- Button trigger modal -->
+							<a href="<?php echo $href_modal . '/' .$sa['id_stockactual']; ?>" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">
+							  <span id="mostrar_header" title="Agregar Comentario" class="glyphicon glyphicon-pencil"></span>
+							</a>
+						<?php else: ?>
+							<a href="<?php echo $href_modal . '/' . $sa['id_stockactual']; ?>" class="/" data-toggle="modal" data-target="#myModal">
+								<?php echo $sa['memo']; ?>
+							</a>
+						<?php endif; ?>
+
 				</td>
 			</tr>
 		<?php endforeach ?>
@@ -78,3 +89,17 @@
 
 
 
+
+<!-- Modal Para escribir el memo en el stock -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>
+
+
+<script type="text/javascript">
+// TODO::JUAMPA esto lo pongo por que si no refresca la pagina, no me levanta otros eventos,
+// tampoco cargaria lo que puse, pero probar de hacer otra cosa, que sea mejor. . . .
+$('#myModal').on('hidden.bs.modal', function () {
+    location.reload(false);
+})
+
+</script>
