@@ -20,7 +20,15 @@
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Destino</label>
-				<input type="text" id="destino" name="destino" value="<?php echo $remito_header['destino']; ?>" class="form-control required" placeholder="Area de Destino" required="required">
+				<select name="id_destinos" class="form-control required" id="id_destinos" placeholder="Seleccionar Destino" required="required">
+					<option value=""> Seleccione Destino. . .</option>
+					<?php foreach ($destinos AS $dest): ?>
+						<option value="<?php echo $dest['id_destinos']; ?>"
+									<?php if ($remito_header['id_destinos'] == $dest['id_destinos']): echo 'selected="selected"'; endif; ?> >
+							<?php echo ' ' . $dest['nombre']; ?>
+						</option>
+					<?php endforeach; ?>
+				</select>
 			</div>
 		</div>
 
@@ -113,7 +121,17 @@
 				</div>
 			</div>
 		</div>
+	</form>
+	<br /><br />
+	<div class="col-md-12">
+		<div class="col-md-10">
+		</div>
+		<div class="col-md-2">
+			<button type="submit" name="agregar" id="agregar" class="btn btn-default cerrar_remito" ><strong>CERRAR REMITO</strong></button>
+		</div>
 	</div>
+
+</div>
 </div>
 
 <div class="col-md-12">

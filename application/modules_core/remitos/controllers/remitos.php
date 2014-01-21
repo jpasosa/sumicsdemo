@@ -3,7 +3,8 @@
 class Remitos extends MY_Codeigniter
 {
 
-	public function __construct(){
+	public function __construct()
+	{
 		parent::__construct();
 		$this->section = $this->router->fetch_class() . '.' . $this->router->fetch_method();
 		$this->load->model('remitos/repo_remitos'); // Repositorio del modelo de Remito
@@ -12,9 +13,16 @@ class Remitos extends MY_Codeigniter
 		$this->load->helper('date');
 		// $this->css_includes				= array('frontend/css/remitos.css');
 		$this->data['view_menu_izq']	= 'remitos/menu_izq';
-		$this->data['configure_link']	= 'remitos/configuracion';
+		$this->data['configure_link']		= 'remitos/configuracion';
+		$this->data['configure_link_title']	= 'Configuración de Remitos';
 		$this->data['title_section']		= 'REMITOS';
-		$this->data['js_includes']		= array();
+		$this->data['js_includes']		= array('frontend/datepicker/datepicker.spanish.js',
+											'frontend/datepicker/jquery-ui.js',
+											'frontend/js/move_header_remito.js',
+											'../../assets/chosen/chosen.jquery.js',
+											'frontend/js/cerrar_remito.js');
+		$this->data['css_includes']		= array('frontend/css/remitos.css', 'frontend/datepicker/jquery-ui.css',
+											'../../assets/chosen/chosen.css');
 		if (!isLogged($this->session)) {
 			redirect('login');
 		}
@@ -22,8 +30,7 @@ class Remitos extends MY_Codeigniter
 
 	public function __destruct()
 	{
-		echo 'destructor';
-		die();
+
 	}
 
 	public function index()
@@ -35,27 +42,29 @@ class Remitos extends MY_Codeigniter
 		}
 	}
 
+
+	/**
+	 * Listado de los Remitos
+	 *
+	 * @team 	Senaf
+	 * @author 	juampa <jpasosa@gmail.com>
+	 * @date 	21 de enero del 2014
+	 *
+	 * @return      void()
+	 **/
 	public function listar()
 	{
 		try {
-			echo 'lista de los remitos';
-			die();
+			// Lista de los remitos. . . . .
+
+
+
+
+
 
 		} catch (Exception $e) {
-			throw new Exception($e->getMessage());
-		}
-	}
-
-
-
-	public function configuracion()
-	{
-		try {
-			echo 'configuracion de los remitos';
-			die();
-
-		} catch (Exception $e) {
-			throw new Exception($e->getMessage());
+			echo $e->getMessage();
+			exit(1);
 		}
 	}
 
@@ -170,6 +179,11 @@ class Remitos extends MY_Codeigniter
 				$items = array();
 			}
 
+
+			$destinos 			= $this->repo_remitos->getDestinos();
+			$data['destinos'] 	= $destinos;
+
+
 			// MENSAJES DE VALIDACIONES
 			$data['error_message']		= $error_message;
 
@@ -190,10 +204,6 @@ class Remitos extends MY_Codeigniter
 			$data['configure_link_title']= 'Configuraciones Remitos';
 			$data['css_includes']	= array('frontend/css/remitos.css', 'frontend/datepicker/jquery-ui.css',
 											'../../assets/chosen/chosen.css');
-			$data['js_includes']		= array('frontend/datepicker/datepicker.spanish.js',
-											'frontend/datepicker/jquery-ui.js',
-											'frontend/js/move_header_remito.js',
-											'../../assets/chosen/chosen.jquery.js');
 			// LEVANTO VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
@@ -204,6 +214,87 @@ class Remitos extends MY_Codeigniter
 			throw new Exception($e->getMessage());
 		}
 	}
+
+
+
+
+
+
+
+	/**
+	 * Configuración de los remitos. Tenemos un ABM de destinos
+	 *
+	 * @team 	Senaf
+	 * @author 	juampa <jpasosa@gmail.com>
+	 * @date 	21 d enero del 2014
+	 *
+	 * @return      void()
+	 **/
+	public function configuracion()
+	{
+		try {
+			$data 					= $this->data;
+			$data['section'] 			= $this->section; // en donde estamos
+
+
+			$error_message		= array();
+			$data['error_message'] 	= $error_message;
+
+			// DATOS DE VISTAS
+			$data['id_menu_left'] 	= 'menu_remitos';
+			$data['title']				= 'Control Stock';
+			$data['id_content']		= 'remitos_configuracion';
+			$data['view_template']	= 'remitos/config';
+			$data['show_add']		= true;
+			$data['show_list']		= true;
+			// LEVANTO VISTAS
+			$this->load->view('templates/heads', $data);
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/content', $data);
+			$this->load->view('templates/footer', $data);
+
+
+		} catch (Exception $e) {
+			echo $e->getMessage();
+			exit(1);
+		}
+	}
+
+	// CONFIGURACION :: LISTAR CATEGORIAS
+	public function conf_listar_destinos()
+	{
+		try {
+			$data 					= $this->data;
+			$data['section'] 			= $this->section;
+
+			$error_message		= array();
+			$data['error_message'] 	= $error_message;
+
+
+			$data['categorias']		= $this->get_categorias->getAll();
+
+
+			// DATOS DE VISTAS
+			$data['id_menu_left'] 	= 'menu_productos';
+			$data['title']				= 'Control Stock';
+			$data['id_content']		= 'productos_configuracion';
+			$data['view_template']	= 'productos/config_listado_categorias';
+			$data['css_includes']	= $this->css_includes;
+			$data['js_includes']		= array('frontend/js/del_category.js');
+			$data['show_add']		= true;
+			$data['show_list']		= true;
+			// VISTAS
+			$this->load->view('templates/heads', $data);
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/content', $data);
+			$this->load->view('templates/footer', $data);
+
+		} catch (Exception $e) {
+			throw new Exception($e->getMessage());
+		}
+
+	}
+
 
 
 
@@ -230,10 +321,10 @@ class Remitos extends MY_Codeigniter
 		} else {
 			$remito['fecha'] = '';
 		}
-		if ($this->input->post('destino')) {
-			$remito['destino'] = $this->input->post('destino');
+		if ($this->input->post('id_destinos')) {
+			$remito['id_destinos'] = $this->input->post('id_destinos');
 		} else {
-			$remito['destino'] = '';
+			$remito['id_destinos'] = '';
 		}
 		if ($this->input->post('observaciones')) {
 			$remito['observaciones'] = $this->input->post('observaciones');

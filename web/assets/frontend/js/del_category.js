@@ -1,4 +1,5 @@
-$(document).ready(function() {
+$(document).ready(function()
+{
     //##### ELIMINAR PUBLICACION #########
     $("body").on("click", ".del_category", function(delRef) {
         delRef.returnValue = false;
@@ -22,7 +23,4 @@ $(document).ready(function() {
         // $(".observaciones textarea").focus();
     }
     });
-
-
-
 });

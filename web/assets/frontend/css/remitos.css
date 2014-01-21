@@ -54,3 +54,169 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**/
+/**/
+/*CONFIGURAION*/
+/**/
+/**/
+
+#remitos_configuracion #right ul li.dropdown a.menu {
+    padding: 8px 15px 8px 15px;
+    color: #D82133;
+}
+
+#remitos_configuracion #right .title,
+#listar_productos #right .title {
+    width: 100%;
+    font-size: 22px;
+    margin: 10px 0 10px 0;
+    font-weight: bold;
+    color: #333333;
+}
+
+#remitos_configuracion #right .content_menu {
+    width: 100%;
+    margin: 10px 0 30px 0;
+}
+
+
+
+/*ALTA EDICION DE UNA CATEGORIA*/
+#remitos_configuracion #right .add_edit_category {
+    width: 420px;
+    /*margin: 10px 0 30px 0;*/
+    background-color: #F5F5F5;
+    height: 180px;
+    border: 1px solid #DDDDDD;
+}
+
+#remitos_configuracion #right .add_edit_category .title {
+    width: 100%;
+    background-color: #DDDDDD;
+    /*height: 40px;*/
+    text-align: center;
+    margin: 0;
+}
+
+#remitos_configuracion #right .add_edit_category .codigo_abrev {
+    margin: 10px 0 10px 20px;
+}
+#remitos_configuracion #right .add_edit_category .codigo_abrev label {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+#remitos_configuracion #right .add_edit_category .codigo_abrev input {
+    margin: 0 0 0 87px;
+    border: 1px solid #8C8A8A;
+    width: 100px;
+
+}
+
+#remitos_configuracion #right .add_edit_category .nombre {
+    margin: 10px 0 10px 20px;
+}
+#remitos_configuracion #right .add_edit_category .nombre label {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+#remitos_configuracion #right .add_edit_category .nombre input {
+    margin: 10px 0 10px 20px;
+    border: 1px solid #8C8A8A;
+    width: 250px;
+}
+/*boton agregar*/
+#remitos_configuracion #right .add_edit_category .agregar {
+    margin: 0 60px 0 0;
+    float: right;
+}
+
+
+
+/*LISTA DE CATEGORIAS*/
+
+#remitos_configuracion #right .lista_categorias tr td.actions a {
+    padding: 0 10px 0 10px;
+}
+
+#remitos_configuracion #right .lista_categorias tr td.actions a:hover {
+    text-decoration: none;
+    list-style-type: none;
+    opacity:0.5;
+    filter:alpha(opacity=50);
+}
+
+
+
+
+
+
+/*CONFIGURACION DE LA PAGINACION DE LOS PRODUCTOS*/
+
+#remitos_configuracion #right .config_page {
+    width: 420px;
+    /*margin: 10px 0 30px 0;*/
+    background-color: #F5F5F5;
+    height: 120px;
+    border: 1px solid #DDDDDD;
+}
+
+#remitos_configuracion #right .config_page {
+    width: 420px;
+    /*margin: 10px 0 30px 0;*/
+    background-color: #F5F5F5;
+    height: 120px;
+    border: 1px solid #DDDDDD;
+}
+
+#remitos_configuracion #right .config_page .title {
+    width: 100%;
+    background-color: #DDDDDD;
+    /*height: 40px;*/
+    text-align: center;
+    margin: 0;
+}
+
+#remitos_configuracion #right .config_page .cant_items {
+    margin: 10px 0 10px 20px;
+}
+#remitos_configuracion #right .config_page .cant_items label {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+#remitos_configuracion #right .config_page .cant_items input {
+    margin: 0 0 0 87px;
+    border: 1px solid #8C8A8A;
+    width: 100px;
+
+}
+
+/*boton agregar*/
+#remitos_configuracion #right .config_page .agregar {
+    margin: 0 60px 0 0;
+    float: right;
+}
+
+
+
+
+
+
+

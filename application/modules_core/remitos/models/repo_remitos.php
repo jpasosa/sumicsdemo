@@ -30,7 +30,7 @@ class Repo_remitos extends CI_Model
 			if (!$validate_fecha) {
 				$errors['fecha_invalida'] = 'La fecha no es existente';
 			}
-			if ($remito_header['destino'] == '') {
+			if ($remito_header['id_destinos'] == '') {
 				$errors['falta_destino'] = 'Debe ingresar un destino';
 			}
 
@@ -63,7 +63,7 @@ class Repo_remitos extends CI_Model
 
 			$data = array(
 					   'fecha'			=> $header['fecha'],
-					   'destino' 			=> $header['destino'],
+					   'id_destinos' 		=> $header['id_destinos'],
 					   'observaciones' 	=> $header['observaciones'],
 					   'anulado' 			=> 0,
 					   'en_proceso' 		=> 1
@@ -127,7 +127,7 @@ class Repo_remitos extends CI_Model
 
 		$data = array(
 					   'fecha'			=> $header['fecha'],
-					   'destino' 			=> $header['destino'],
+					   'id_destinos' 		=> $header['id_destinos'],
 					   'observaciones' 	=> $header['observaciones'],
 					   'anulado' 			=> 0,
 					   'en_proceso' 		=> 1
@@ -206,6 +206,36 @@ class Repo_remitos extends CI_Model
 			echo $e->getMessage();
 			exit(1);
 		}
+	}
+
+
+	/**
+	 * Trae todos los destinos activos.
+	 *
+	 * @team 	Senaf
+	 * @author 	juampa <jpasosa@gmail.com>
+	 * @date 	21 de enero del 2014
+	 *
+	 * @return      Array(), si no hay destinos activos, nos devuelve un array vacio
+	 **/
+	public function getDestinos()
+	{
+		try {
+			$q 			= $this->db->get_where('destinos', array('activo' => 1));
+			$destinos 	= $q->result_array();
+
+			if (count($destinos) > 0) {
+				return $destinos;
+			} else {
+				return array();
+			}
+
+
+		} catch (Exception $e) {
+			echo $e->getMessage();
+			exit(1);
+		}
+
 	}
 
 

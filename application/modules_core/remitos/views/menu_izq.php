@@ -6,7 +6,7 @@
 </a>
 
 <?php if ( isset($show_add) && $show_add): ?>
-	<a href="<?php echo site_url('productos/add');?>">
+	<a href="<?php echo site_url('remitos/agregar');?>">
 		<img class="list" src="<?php echo ASSETS . 'frontend/images/icons/add.png'; ?>" alt="listar" title="Agregar Productos" width="85" height="85" />
 	</a>
 <?php endif; ?>
